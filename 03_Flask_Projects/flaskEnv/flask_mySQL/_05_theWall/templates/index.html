@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <h3>Enter an email address</h3>
+        {% with messages = get_flashed_messages() %} 
+            {% if messages %}
+                {% for message in messages %}
+                <p class="red">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/login" method="POST">
+            <input type="text" placeholder="Email Address" name="email" autofocus><br>
+            <input type="password" placeholder="Password" name="pass"><br>
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        <h4>Don't' have an account? <a href="/signup">Sign up here</a></h4>
+    </body>
+</html>

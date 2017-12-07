@@ -1,0 +1,21 @@
+<h5>Current Users:</h5>
+<table>
+    <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Confirm</th>
+        <th>Date Created</th>
+    </tr>
+    {% for user in all_users %}
+    <tr>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.confirm }}</td>
+        <td>{{ user.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>

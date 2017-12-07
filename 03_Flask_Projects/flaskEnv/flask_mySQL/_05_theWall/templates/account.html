@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            {% with messages = get_flashed_messages() %} 
+                {% if messages %}
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <a href="/logout">Logout</a>
+            <h1>Welcome, {{ session['user'][0].first_name }}!</h1>
+            
+            <form action="/postMsg" method="POST">
+                <textarea name="msg" rows="4" cols="50" placeholder="Write something here" autofocus></textarea>
+                <input type="submit" id="submit" name="submit" value="Post">
+            </form>
+
+            {% for msg in session['messages'] %}
+                {% if msg['active'] %}
+                <h2>{{ msg['name'] }} <span>at {{ msg['created_at'] }} (head post) 
+                    {% if msg['user_id'] == session['user'][0]['id'] %}
+                    <a href="{{ url_for('deletePost',msg_id = msg['id']) }}">delete</a>
+                    {% endif %}
+                    </span></h2>
+                <p class="message">
+                    {{ msg['message'] }}
+                </p>
+                    {% for comment in session['comments'] %}
+                        {% if msg['id'] == comment['message_id'] %}
+                        <h4 class="comment_margin">{{ comment['name'] }} <span>at {{ comment['created_at'] }} (comment post)</span></h4>
+                        <p class="message comment_margin">
+                            {{ comment['comment'] }}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="comment_margin_form">
+                        <form action="/postComment" method="POST">
+                            <input type="hidden" value="{{ msg['id'] }}" name="msg_id">
+                            <textarea name="comment" rows="2" cols="50" placeholder="Write something here" autofocus></textarea>
+                            <input type="submit"  class="submit" name="submit" value="Post">
+                        </form>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </body>
+</html>

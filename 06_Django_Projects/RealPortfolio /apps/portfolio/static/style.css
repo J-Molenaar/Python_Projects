@@ -1,0 +1,39 @@
+.wrapper {
+    width: 1070px;
+    margin: 0px auto;
+    padding: 0px;
+}
+.wrapper h1{
+    margin-left: 500px;
+}
+.wrapper h3{
+    margin-left: 500px;
+}
+.wrapper li {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 200px;
+    padding: 10px;
+}
+.right{
+    width: 520px;
+    border: 2px solid black;
+    border-radius: 5px;
+    left: 190px;
+    top: 250px;
+    margin-left: 500px;;
+}
+.left{
+    width: 520px;
+    border: 2px solid black;
+    border-radius: 5px;
+    left: 190px;
+    top: 250px;
+    margin-left: 200px;;
+}
+.about {
+    width: 520px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 300px;
+}

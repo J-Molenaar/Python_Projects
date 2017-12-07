@@ -1,0 +1,20 @@
+
+.box {
+  width: 200px;
+  height: 200px;
+  outline: 2px solid black;
+  display: inline-block;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+.activites {
+  width: 99%;
+  height: 200px;
+  outline: 2px solid black;
+  display: inline-block;
+  text-align: left;
+  overflow: scroll;
+  padding-left: 10px;
+}

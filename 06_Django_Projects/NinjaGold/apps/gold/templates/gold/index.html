@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+  </head>
+  <body>
+      <h3>Your Gold: {{ request.session.gold }}</h3>
+      <div class="box">
+          <p>Farm (earns 10-20 golds)</p>
+            <form action='/farm' method='post'>
+                {% csrf_token %}
+                <input type='submit' value='Find Gold!'>
+            </form>
+            <p>Cave (earns 5-10 golds)</p>
+            <form action='/cave' method='post'>
+                {% csrf_token %}
+                <input type='submit' value='Find Gold!'>
+            </form>
+            <p>House (earns 2-5 golds)</p>
+            <form action='/house' method='post'>
+                {% csrf_token %}
+                <input type='submit' value='Find Gold!'>
+            </form>
+            <p>Casino (earns/takes 0-50 golds)</p>
+            <form action='/casino' method='post'>
+                {% csrf_token %}
+                <input type='submit' value='Lets Gamble!'>
+            </form>
+        </div>
+        <div class="activities">
+            <p>Activity:</p>
+            {% for item in request.session.activity %}
+            <p> {{ item }}</p>
+            {% endfor %}
+        </div>
+        <form action='/reset' method='post'>
+            {% csrf_token %}
+            <input type='submit' value='reset'>
+        </form>
+ </body>
+</html>

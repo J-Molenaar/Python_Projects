@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>Enter your details:</h1>
+        {% with messages = get_flashed_messages() %}    <!--The with messages here helps us declare a variable in our template that we can use within a specific scope -->
+            {% if messages %}                            <!--Check if there are even any messages that came back from the get_flashed_messages() function -->
+            {% for message in messages %}           <!--Loop through all messages -->
+                <p>{{ message }}</p>                  <!--Print the messages one by one each in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action='/register' method='post'>
+            <input type="hidden" name="action" value="register">
+            First Name: <input type="text" name="first" value="">
+            Last Name: <input type="text" name="last" value="">
+            Email: <input type="text" name="email" value="">
+            Password:<input type="password" name="password" value="">
+            Confirm Password:<input type="password" name="confirm" value="">
+            <input type="submit" value="Register">
+        </form>
+
+  </body>
+</html>
+
+
+<!-- email
+first_name
+last_name
+password
+confirm_password
+Here are the validations you must include:
+
+All fields are required and must not be blank
+First and Last Name cannot contain any numbers
+Password should be more than 8 characters
+Email should be a valid email
+Password and Password Confirmation should match -->

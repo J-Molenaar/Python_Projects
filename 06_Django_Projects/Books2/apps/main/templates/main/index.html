@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load static%}
+        <link rel="stylesheet" href="{% static 'style.css' %}" media="screen" title="no title" charset="utf-8">
+        <title>Book List</title>
+    </head>
+    <body>
+        <div class="table">
+        <h1>Books</h1>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+          </tr>
+          {% for book in all_books %}
+            <tr>
+              <td>{{ book.id }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.category }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        <h3>Add a new book:</h3>
+        <form action="{% url 'books:create' %}" method="post">
+        {% csrf_token %}
+            Title: <input type="text" name="title">
+            Author: <input type="text" name="author">
+            Category: <input type="text" name="category">
+            <input type="submit" value="Add Book">
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ messages }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </body>
+</html>

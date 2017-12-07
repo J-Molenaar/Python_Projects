@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <h3>Create an account</h3>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="red">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="/register" method="POST">
+            <input type="text" placeholder="First Name" name="first_name" autofocus><br>
+            <input type="text" placeholder="Last Address" name="last_name"><br>
+            <input type="text" placeholder="Email Address" name="email"><br>
+            <input type="password" placeholder="Password" name="pass1"><br>
+            <input type="password" placeholder="Confirm Password" name="pass2"><br>
+            <input type="submit" value="Submit">
+        </form>
+        <h4>Already have an account? <a href="/">Sign in here</a></h4>
+    </body>
+</html>

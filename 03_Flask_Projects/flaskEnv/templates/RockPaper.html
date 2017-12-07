@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <p>
+          Won: {{session['won']}} <br>
+          Lost: {{session['lost']}} <br>
+          Tie: {{session['tie']}}
+      </p>
+      <p>
+          <h1>Rock, Paper, Scissors</h1>
+      </p>
+      <p>
+        <!-- {{session['gameOutcome']}} -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+      </p>
+      <p>
+        <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="0">
+            <input type='submit' value='Rock'>
+        </form>
+        <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="1">
+            <input type='submit' value='Paper'>
+        </form>
+        <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="2">
+            <input type='submit' value='Scissors'>
+        </form>
+    </p>
+
+  </body>
+</html>

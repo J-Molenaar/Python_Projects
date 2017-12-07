@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <p>
+          Count: {{session['count']}} <br>
+      </p>
+      <p>
+          <h1>Lets count!</h1>
+      </p>
+
+      <p>
+        <!-- <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="0">
+            <input type='submit' value='Count'>
+        </form> -->
+        <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="1">
+            <input type='submit' value='Count 2x'>
+        </form>
+        <form action='/dothing' method='post'>
+            <input type="hidden" name="f" value="2">
+            <input type='submit' value='Reset'>
+        </form>
+    </p>
+
+  </body>
+</html>

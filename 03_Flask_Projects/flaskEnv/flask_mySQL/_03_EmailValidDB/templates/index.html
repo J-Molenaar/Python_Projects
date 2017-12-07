@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>Enter your email address:</h1>
+        <form action='/email' method='post'>
+            Email: <input type="text" name="email" value="">
+            <input type="submit" value="Add">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Added</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%  for email in all_emails: %}
+                <tr>
+                    <td>{{ email['email'] }}</td>
+                    <td>{{ email['created_at'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  </body>
+</html>

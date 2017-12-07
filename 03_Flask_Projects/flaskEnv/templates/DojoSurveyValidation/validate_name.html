@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Validate This!</title>
+  </head>
+  <body>
+      <h1>Enter Information Below</h1>
+      <!--TO USE SEESION, you have to set a secret key. More info at: http://flask.pocoo.org/docs/0.10/quickstart/#sessions -->
+        {% with messages = get_flashed_messages() %}    <!--The with messages here helps us declare a variable in our template that we can use within a specific scope -->
+            {% if messages %}                            <!--Check if there are even any messages that came back from the get_flashed_messages() function -->
+            {% for message in messages %}           <!--Loop through all messages -->
+                <p>{{ message }}</p>                  <!--Print the messages one by one each in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+      <form action='/process' method='POST' value=""> <!-- NOTE that /process links to the process function in .py file-->
+        Name:<input type="text" name='name'>
+        <input type="submit" value="Submit">
+      </form>
+  </body>
+</html>
